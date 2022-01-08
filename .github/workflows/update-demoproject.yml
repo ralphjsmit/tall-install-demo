@@ -31,7 +31,8 @@ jobs:
           cd ..
           pwd
           ls -la .
-          laravel new tall-install-demo --force
+          rm -rf tall-install-demo
+          laravel new tall-install-demo
           composer require ralphjsmit/tall-interactive
           php artisan tall-install --browsersync --pest
           composer dump-autoload
@@ -44,4 +45,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "Update project files"
+          git fetch
+          git branch -u origin/main
+          git rebase
           git push -f origin main

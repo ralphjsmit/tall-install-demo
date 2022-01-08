@@ -28,7 +28,6 @@ jobs:
       - name: Update code
         run: |
           ls -la .
-          cd ..
           pwd
           ls -la .
           laravel new laravel-installation

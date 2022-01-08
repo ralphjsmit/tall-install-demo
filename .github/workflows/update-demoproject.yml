@@ -37,7 +37,7 @@ jobs:
           composer require ralphjsmit/tall-install
           php artisan tall-install --browsersync --pest
           composer dump-autoload
-          composer install
+          composer upgrade
           rm composer.lock
 
       - name: Commit updated project files

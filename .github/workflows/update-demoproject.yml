@@ -28,7 +28,10 @@ jobs:
         run: |
           git rm -r .
           ls -la .
-          laravel new . --force
+          cd ..
+          pwd
+          ls -la .
+          laravel new tall-install-demo --force
           composer require ralphjsmit/tall-interactive
           php artisan tall-install --browsersync --pest
           composer dump-autoload

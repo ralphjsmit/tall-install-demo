@@ -32,23 +32,23 @@ jobs:
           cd ..
           pwd
           ls -la .
-          rm -rf tall-install-demo
-          laravel new tall-install-demo
-          cd tall-install-demo
+          laravel new laravel-installation
+          cd laravel-installation
           composer require ralphjsmit/tall-install
-          php artisan tall-install --browsersync --pest
+#          php artisan tall-install --browsersync --pest
           composer dump-autoload
           composer upgrade
           rm composer.lock
+          cd ..
+          cp -R laravel-installation/. .
+
 
       - name: Commit updated project files
         run: |
-          git init
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "Update project files"
-          git remote add origin https://github.com/ralphjsmit/tall-install-demo.git
           git fetch
           git branch -u origin/main
           git rebase

@@ -39,6 +39,7 @@ jobs:
           rm composer.lock
           cd ..
           cp -R laravel-installation/. .
+          rm -rf laravel-installation
           pwd
           ls -la .
 

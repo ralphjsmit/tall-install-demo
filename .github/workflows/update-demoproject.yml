@@ -25,7 +25,7 @@ jobs:
         run: composer global require laravel/installer
 
       - name: Update code
-      - run: |
+        run: |
           git rm -r .
           laravel new
           composer require ralphjsmit/tall-interactive

@@ -2,7 +2,7 @@ name: "Update Demo Project on new Release"
 
 on:
   repository_dispatch:
-    types: [package_release]
+    types: [package_released]
 
 jobs:
   update:

@@ -34,6 +34,7 @@ jobs:
           laravel new laravel-installation
           cd laravel-installation
           composer require ralphjsmit/tall-install
+          php artisan tall:install --browsersync --pest
           composer dump-autoload
           composer upgrade
           rm composer.lock

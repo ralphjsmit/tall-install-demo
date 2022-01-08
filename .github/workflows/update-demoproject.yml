@@ -50,6 +50,7 @@ jobs:
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
           git add .
+          git diff-index --quiet HEAD || git commit -m "Update project files"
           git commit -m "Update project files"
           git fetch
           git branch -u origin/main

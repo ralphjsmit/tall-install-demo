@@ -33,6 +33,7 @@ jobs:
           ls -la .
           rm -rf tall-install-demo
           laravel new tall-install-demo
+          cd tall-install-demo
           composer require ralphjsmit/tall-interactive
           php artisan tall-install --browsersync --pest
           composer dump-autoload

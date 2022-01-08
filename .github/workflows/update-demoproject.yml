@@ -21,13 +21,10 @@ jobs:
         with:
           ref: main
 
-      - name: Install Laravel Installer
-        run: composer global require laravel/installer
-
       - name: Update code
         run: |
           git rm -r .
-          laravel new
+          composer create-project laravel/laravel .
           composer require ralphjsmit/tall-interactive
           php artisan tall-install --browsersync --pest
           composer dump-autoload

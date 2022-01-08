@@ -40,6 +40,8 @@ jobs:
           rm composer.lock
           cd ..
           cp -R laravel-installation/. .
+          pwd
+          ls -la .
 
 
       - name: Commit updated project files

@@ -27,7 +27,6 @@ jobs:
 
       - name: Update code
         run: |
-          git rm -r .
           ls -la .
           cd ..
           pwd

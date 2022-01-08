@@ -1,28 +1,42 @@
-#name: "Update Demo Project on new Release"
-#
-#on:
-#  release:
-#    types: [released]
-#
-#jobs:
-#  update:
-#    runs-on: ubuntu-latest
-#
-#    steps:
-#      - name: Checkout code
-#        uses: actions/checkout@v2
-#        with:
-#          ref: main
-#
-#      - name: Update Changelog
-#        uses: stefanzweifel/changelog-updater-action@v1
-#        with:
-#          latest-version: ${{ github.event.release.name }}
-#          release-notes: ${{ github.event.release.body }}
-#
-#      - name: Commit updated CHANGELOG
-#        uses: stefanzweifel/git-auto-commit-action@v4
-#        with:
-#          branch: main
-#          commit_message: Update CHANGELOG
-#          file_pattern: CHANGELOG.md
+name: "Update Demo Project on new Release"
+
+on:
+  repository_dispatch:
+    types: [package_release]
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Setup PHP with PECL extension
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.0'
+          extensions: pcntl
+
+      - name: Checkout code
+        uses: actions/checkout@v2
+        with:
+          ref: main
+
+      - name: Install Laravel Installer
+        run: composer global require laravel/installer
+
+      - name: Update code
+      - run: |
+          git rm -r .
+          laravel new
+          composer require ralphjsmit/tall-interactive
+          php artisan tall-install --browsersync --pest
+          composer dump-autoload
+          composer install
+          rm composer.lock
+
+      - name: Commit updated project files
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          git add .
+          git commit -m "Update project files"
+          git push -f origin main

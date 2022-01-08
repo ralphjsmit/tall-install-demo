@@ -48,6 +48,7 @@ jobs:
           git config --local user.name "GitHub Actions"
           git add .
           git commit -m "Update project files"
+          git remote add origin https://github.com/ralphjsmit/tall-install-demo.git
           git fetch
           git branch -u origin/main
           git rebase

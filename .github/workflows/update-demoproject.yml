@@ -30,6 +30,7 @@ jobs:
           ls -la .
           pwd
           ls -la .
+          rm -rf laravel-installation
           laravel new laravel-installation
           cd laravel-installation
           composer require ralphjsmit/tall-install
